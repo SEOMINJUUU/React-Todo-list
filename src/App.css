@@ -1,33 +1,95 @@
+body {
+  background-color: lightsteelblue;
+}
+
 .App {
-  text-align: center;
+  display: inline-block;
+  width: 70%;
+  margin: 1% 15%;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 0 10px rgb(150, 150, 150);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+#title {
+  margin: 10px 0;
+  font-size: 28px;
+  font-weight: 500;
+  color: lightgrey;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: black;
+}
+
+#input {
+  width: 100%;
+  margin: 5px 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+
+input[type="text"] {
+  padding: 0 5px;
+  margin: 0;
+  width: 925px;
+  height: 30px;
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: lightgrey;
+  font-weight: 700;
+}
+
+.btn {
+  position: relative;
+  margin: 1px;
+  padding: 0 15px;
+  height: 32px;
+  float: right;
   color: white;
+  font-weight: 900;
+  border: none;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-blue {
+  background-color: dodgerblue;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-orange {
+  background-color: orange;
+}
+
+.btn-red {
+  background-color: tomato;
+}
+
+#control {
+  padding: 10px 0;
+  height: 33px;
+}
+
+#list {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid lightgrey;
+  background-color: ghostwhite;
+}
+
+.delete {
+  width: 39px;
+  height: 39px;
+  bottom: 12px;
+  left: 12px;
 }

@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import Title from './components/Title'
+import Content from './components/Content.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      leftTasks: 0
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  componentDidMount () {
+    document.title = 'Todo-list'
+  }
+
+  handleChange (num) {
+    this.setState({
+      leftTasks: num + 1
+    })
+  }
+
+  render () {
+    return (
+      <div className='App'>
+        <Title leftTask={this.state.leftTasks} />
+        <Content onChange={this.handleChange} />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
