@@ -1,0 +1,19 @@
+#input {
+  width: 100%;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="text"] {
+  padding: 0 5px;
+  margin: 0;
+  width: 925px;
+  height: 30px;
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: lightgrey;
+  font-weight: 700;
+}

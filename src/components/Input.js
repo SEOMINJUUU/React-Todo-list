@@ -1,12 +1,11 @@
 import React from 'react'
-import Task from './Task'
 import { FaPlus } from 'react-icons/fa'
 
 class Input extends React.Component {
   constructor (props) {
     super(props)
     this.renderTask = this.renderTask.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
     this.state = {
       text: ''
     }
@@ -14,14 +13,14 @@ class Input extends React.Component {
 
   renderTask () {
     if (this.state.text === '') { return }
-    this.props.onChange(<Task text={this.state.text} />)
+    this.props.onChange(this.state.text)
     this.setState({
       text: ''
     })
   }
 
-  handleChange (e) {
-    this.setState({ text: e.target.value })
+  handleKeyPress (e) {
+    if (e.key === 'Enter') { this.renderTask() }
   }
 
   render () {
@@ -31,9 +30,14 @@ class Input extends React.Component {
           type='text'
           placeholder='New task'
           value={this.state.text}
-          onChange={this.handleChange}
+          onChange={(e) => this.setState({ text: e.target.value })}
+          onKeyPress={this.handleKeyPress}
         />
-        <button className='btn btn-blue' onClick={this.renderTask}><FaPlus /> Add</button>
+        <button
+          className='btn btn-blue'
+          onClick={this.renderTask}>
+          <FaPlus /> Add
+        </button>
       </div>
     )
   }

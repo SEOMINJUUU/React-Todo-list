@@ -1,10 +1,12 @@
 import React from 'react'
-import { FaTrashAlt, FaCheck } from 'react-icons/fa'
+import { FaFilter, FaTrashAlt, FaCheck } from 'react-icons/fa'
 
 class Control extends React.Component {
   render () {
     return (
       <div id='control'>
+        /* 필터링 버튼 */
+        <button><FaFilter /> Filter</button>
         <button className='btn btn-red'>
           <FaTrashAlt /> Clear All
         </button>

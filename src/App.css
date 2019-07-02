@@ -1,7 +1,3 @@
-body {
-  background-color: lightsteelblue;
-}
-
 .App {
   display: inline-block;
   width: 70%;
@@ -9,6 +5,29 @@ body {
   padding: 15px;
   background-color: white;
   box-shadow: 0 0 10px rgb(150, 150, 150);
+}
+
+.btn {
+  position: relative;
+  margin: 1px;
+  padding: 0 15px;
+  height: 32px;
+  float: right;
+  color: white;
+  font-weight: 900;
+  border: none;
+}
+
+.btn-blue {
+  background-color: dodgerblue;
+}
+
+.btn-orange {
+  background-color: orange;
+}
+
+.btn-red {
+  background-color: tomato;
 }
 
 #title {
@@ -44,29 +63,6 @@ input::placeholder {
   font-weight: 700;
 }
 
-.btn {
-  position: relative;
-  margin: 1px;
-  padding: 0 15px;
-  height: 32px;
-  float: right;
-  color: white;
-  font-weight: 900;
-  border: none;
-}
-
-.btn-blue {
-  background-color: dodgerblue;
-}
-
-.btn-orange {
-  background-color: orange;
-}
-
-.btn-red {
-  background-color: tomato;
-}
-
 #control {
   padding: 10px 0;
   height: 33px;
@@ -82,10 +78,17 @@ li {
   padding: 10px;
   margin: 5px 0;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 900;
   border: 1px solid lightgrey;
   background-color: ghostwhite;
 }
+
+.completed-list {
+  border: 1px solid rgb(188, 219, 184);
+  background-color: rgb(213, 250, 224);
+  text-decoration: line-through;
+}
+
 
 .delete {
   width: 39px;

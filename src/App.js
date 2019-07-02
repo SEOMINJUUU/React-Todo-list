@@ -1,7 +1,7 @@
 import React from 'react'
-import './App.css'
 import Title from './components/Title'
 import Content from './components/Content.js'
+import './App.css'
 
 class App extends React.Component {
   constructor (props) {
@@ -18,7 +18,7 @@ class App extends React.Component {
 
   handleChange (num) {
     this.setState({
-      leftTasks: num + 1
+      leftTasks: num
     })
   }
 
