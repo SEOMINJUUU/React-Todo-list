@@ -4,56 +4,95 @@ import Control from './Control'
 import List from './List'
 
 class Content extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       tasks: []
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleRemove = this.handleRemove.bind(this)
-    this.handleToggle = this.handleToggle.bind(this)
   }
 
   id = 0    // 왜 안에 선언하면 안될까
-  handleChange (text) {
-    const tasks = this.state.tasks
-    this.setState({
-      tasks: tasks.concat({ id: this.id++, text: text, checked: false })
-    })
-    this.props.onChange(tasks.length+1)
+  handleChange = (text) => {
+    const { tasks } = this.state
+    const { onChange, leftTask } = this.props
+
+    this.setState(prevState => ({
+      tasks: prevState.tasks.concat({
+        id: this.id++,
+        text: text,
+        checked: false
+      })
+    }), onChange(leftTask + 1))
   }
 
-  handleRemove (id) {
-    const { tasks }= this.state
-    this.props.onChange(tasks.length-1) // 왜 -1 ?
-    this.setState({ tasks: tasks.filter(task => id !== task.id)})
-    }
-  
-    handleToggle (id) {
-    const {tasks} = this.state
+  handleRemoveAll = () => {
+    const { onChange } = this.props
+
+    this.setState({ tasks: [] }, onChange(0))
+  }
+
+  handleCompleted = () => {
+    const { tasks } = this.state
+    const { onChange } = this.props
+
+    const nextTasks = tasks.filter(task => task.checked === false)
+    this.setState({
+      tasks: nextTasks
+    }, onChange(nextTasks.length))
+  }
+
+  handleRemove = (id) => {
+    const { tasks } = this.state
+    const { onChange, leftTask } = this.props
 
     const index = tasks.findIndex(task => task.id === id)
+
+    this.setState(prevState => ({
+      tasks: prevState.tasks.filter(task => id !== task.id)
+    }), () => {
+      if (!tasks[index].checked)
+        onChange(leftTask - 1)
+    })
+  }
+
+  handleToggle = (id) => {
+    const { tasks } = this.state
+    const { onChange, leftTask } = this.props
+
     const tmp = [...tasks]
-    
+    const index = tasks.findIndex(task => task.id === id)
+    const selected = tasks[index]
+
     tmp[index] = {
-      ...tasks[index],
-      checked: !tasks[index].checked
+      ...selected,
+      checked: !selected.checked
     }
 
     this.setState({
       tasks: tmp
-    })
+    }, onChange(selected.checked ? leftTask + 1 : leftTask - 1))
   }
 
-  render () {
+  render() {
+    const { tasks } = this.state
+    const {
+      handleChange,
+      handleCompleted,
+      handleRemoveAll,
+      handleRemove,
+      handleToggle
+    } = this
+
     return (
       <div>
-        <Input onChange={this.handleChange} />
-        <Control /* onClick={} */ />
-        <List 
-          tasks={this.state.tasks} 
-          onRemove={this.handleRemove} 
-          onToggle={this.handleToggle}/>
+        <Input onChange={handleChange} />
+        <Control
+          onCompleted={handleCompleted}
+          onRemoveAll={handleRemoveAll} />
+        <List
+          tasks={tasks}
+          onRemove={handleRemove}
+          onToggle={handleToggle} />
       </div>
     )
   }

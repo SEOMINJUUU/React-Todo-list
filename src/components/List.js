@@ -2,17 +2,10 @@ import React from 'react'
 import Task from './Task'
 
 class List extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      taskList: []
-    }
-  }
-
   render () {
     const { tasks, onRemove, onToggle } = this.props
 
-    this.state.taskList = tasks.map(
+    const taskList = tasks.map(
       ({ id, text, checked }) => (
         <Task
           id={id}
@@ -27,7 +20,7 @@ class List extends React.Component {
 
     return (
       <ul id='list'>
-        {this.state.taskList}
+        {taskList}
       </ul>
     )
   }

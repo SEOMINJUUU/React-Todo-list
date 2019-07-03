@@ -83,10 +83,16 @@ li {
   background-color: ghostwhite;
 }
 
+li:hover {
+  border: 1px solid rgb(188, 219, 184);
+  background-color: rgb(213, 250, 224);
+}
+
 .completed-list {
   border: 1px solid rgb(188, 219, 184);
   background-color: rgb(213, 250, 224);
   text-decoration: line-through;
+  color: grey;
 }
 
 

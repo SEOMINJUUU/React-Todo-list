@@ -9,24 +9,28 @@ class App extends React.Component {
     this.state = {
       leftTasks: 0
     }
-    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount () {
     document.title = 'Todo-list'
   }
 
-  handleChange (num) {
+  handleChange = (num) => {
     this.setState({
       leftTasks: num
     })
   }
 
   render () {
+    const { leftTasks } = this.state
+    const {
+      handleChange
+    } = this
+    
     return (
       <div className='App'>
-        <Title leftTask={this.state.leftTasks} />
-        <Content onChange={this.handleChange} />
+        <Title leftTask={leftTasks} />
+        <Content leftTask={leftTasks} onChange={handleChange} />
       </div>
     )
   }

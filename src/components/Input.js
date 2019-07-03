@@ -4,38 +4,44 @@ import { FaPlus } from 'react-icons/fa'
 class Input extends React.Component {
   constructor (props) {
     super(props)
-    this.renderTask = this.renderTask.bind(this)
-    this.handleKeyPress = this.handleKeyPress.bind(this)
     this.state = {
       text: ''
     }
   }
 
-  renderTask () {
-    if (this.state.text === '') { return }
-    this.props.onChange(this.state.text)
-    this.setState({
-      text: ''
-    })
-  }
-
-  handleKeyPress (e) {
+  handleKeyPress = (e) => {
     if (e.key === 'Enter') { this.renderTask() }
   }
 
+  renderTask = () => {
+    const { text } = this.state
+    const { onChange } = this.props
+
+    if (text === '') { return }
+
+    onChange(text)
+    this.setState({ text: '' })
+  }
+
   render () {
+    const {text} = this.state
+    const {
+      handleKeyPress,
+      renderTask
+    } = this
+
     return (
       <div id='input'>
         <input
           type='text'
           placeholder='New task'
-          value={this.state.text}
+          value={text}
           onChange={(e) => this.setState({ text: e.target.value })}
-          onKeyPress={this.handleKeyPress}
+          onKeyPress={handleKeyPress}
         />
         <button
           className='btn btn-blue'
-          onClick={this.renderTask}>
+          onClick={renderTask}>
           <FaPlus /> Add
         </button>
       </div>
