@@ -4,7 +4,7 @@ import Task from './Task'
 class List extends React.Component {
   render () {
     const { tasks, filter, onRemove, onToggle } = this.props
-    
+
     const filteredTask = tasks.filter(task => {
       switch (filter) {
         case 'todo':
@@ -37,4 +37,3 @@ class List extends React.Component {
 }
 
 export default List
-
