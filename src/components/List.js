@@ -3,9 +3,19 @@ import Task from './Task'
 
 class List extends React.Component {
   render () {
-    const { tasks, onRemove, onToggle } = this.props
-
-    const taskList = tasks.map(
+    const { tasks, filter, onRemove, onToggle } = this.props
+    
+    const filteredTask = tasks.filter(task => {
+      switch (filter) {
+        case 'todo':
+          return task.checked === false
+        case 'completed':
+          return task.checked === true
+        default:
+          return task
+      }
+    })
+    const taskList = filteredTask.map(
       ({ id, text, checked }) => (
         <Task
           id={id}
@@ -27,3 +37,4 @@ class List extends React.Component {
 }
 
 export default List
+

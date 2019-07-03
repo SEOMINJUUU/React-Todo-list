@@ -7,13 +7,13 @@ class Content extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tasks: []
+      tasks: [],
+      filter: 'all'
     }
   }
 
   id = 0    // 왜 안에 선언하면 안될까
   handleChange = (text) => {
-    const { tasks } = this.state
     const { onChange, leftTask } = this.props
 
     this.setState(prevState => ({
@@ -23,6 +23,10 @@ class Content extends React.Component {
         checked: false
       })
     }), onChange(leftTask + 1))
+  }
+
+  handleFilter = (filter) => {
+    this.setState({filter: filter})
   }
 
   handleRemoveAll = () => {
@@ -74,9 +78,10 @@ class Content extends React.Component {
   }
 
   render() {
-    const { tasks } = this.state
+    const { tasks, filter } = this.state
     const {
       handleChange,
+      handleFilter,
       handleCompleted,
       handleRemoveAll,
       handleRemove,
@@ -87,10 +92,12 @@ class Content extends React.Component {
       <div>
         <Input onChange={handleChange} />
         <Control
+          onFilter={handleFilter}
           onCompleted={handleCompleted}
           onRemoveAll={handleRemoveAll} />
         <List
           tasks={tasks}
+          filter={filter}
           onRemove={handleRemove}
           onToggle={handleToggle} />
       </div>
