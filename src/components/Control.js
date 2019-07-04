@@ -1,4 +1,5 @@
 import React from 'react'
+import Filter from './Filter'
 import { FaFilter, FaTrashAlt, FaCheck } from 'react-icons/fa'
 
 class Control extends React.Component {
@@ -10,43 +11,38 @@ class Control extends React.Component {
     }
   }
 
-  handleClick = (e) => {
+  handleHide = () => {
+    this.setState(prevState => ({
+      hidden: !prevState.hidden
+    }))
+  }
+  
+  handleClick = (id) => {
     const { onFilter } = this.props
 
-    onFilter(e.target.id)
+    onFilter(id)
     this.setState({
-      filter: e.target.id
+      filter: id
     })
   }
 
   render () {
     const { filter, hidden } = this.state
     const { onRemoveAll, onCompleted } = this.props
-    const { handleClick } = this
+    const { handleHide, handleClick } = this
 
     return (
       <div id='control'>
         <button
           className='btn btn-purple'
-          onClick={() => this.setState(prevState => ({
-            hidden: !prevState.hidden
-          }))}>
+          onClick={handleHide}>
           <FaFilter /> Filter
         </button>
 
         <ul className={hidden ? 'hide' : 'show-inline-block'}>
-          <li
-            id='all'
-            className={filter === 'all' ? 'filter-on' : 'filter-off'}
-            onClick={handleClick}> All </li>
-          <li
-            id='todo'
-            className={filter === 'todo' ? 'filter-on' : 'filter-off'}
-            onClick={handleClick}> Todo </li>
-          <li
-            id='completed'
-            className={filter === 'completed' ? 'filter-on' : 'filter-off'}
-            onClick={handleClick}>Completed</li>
+          <Filter id='all' filter={filter} onClick={handleClick} />
+          <Filter id='todo' filter={filter} onClick={handleClick} />
+          <Filter id='completed' filter={filter} onClick={handleClick} />
         </ul>
 
         <button

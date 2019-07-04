@@ -1,15 +1,12 @@
 import React from 'react'
 
-class Title extends React.Component {
-  render () {
-    const { leftTask } = this.props
-    return (
-      <div id='title'>
-        <span className='h1'>Tasks </span>
-        ({leftTask})
-      </div>
-    )
-  }
+function Title (props) {
+  return (
+    <div id='title'>
+      <span className='h1'>Tasks </span>
+      ({props.leftTask})
+    </div>
+  )
 }
 
 export default Title
