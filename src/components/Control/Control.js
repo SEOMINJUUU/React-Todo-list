@@ -1,5 +1,6 @@
 import React from 'react'
-import Filter from './Filter'
+import Filter from '../Filter'
+import './Control.css'
 import { FaFilter, FaTrashAlt, FaCheck } from 'react-icons/fa'
 
 class Control extends React.Component {

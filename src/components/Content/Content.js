@@ -1,7 +1,7 @@
 import React from 'react'
-import Input from './Input'
-import Control from './Control'
-import List from './List'
+import Input from '../Input'
+import Control from '../Control'
+import List from '../List'
 
 class Content extends React.Component {
   constructor(props) {

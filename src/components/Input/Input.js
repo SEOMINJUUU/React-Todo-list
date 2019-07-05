@@ -1,4 +1,5 @@
 import React from 'react'
+import './Input.css'
 import { FaPlus } from 'react-icons/fa'
 
 class Input extends React.Component {

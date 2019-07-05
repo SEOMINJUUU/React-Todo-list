@@ -1,6 +1,6 @@
 import React from 'react'
 import Title from './components/Title'
-import Content from './components/Content.js'
+import Content from './components/Content'
 import './App.css'
 
 class App extends React.Component {

@@ -1,4 +1,5 @@
 import React from 'react'
+import './Task.css'
 import { FaTimes } from 'react-icons/fa'
 
 function Task (props) {

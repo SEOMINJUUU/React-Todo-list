@@ -1,5 +1,6 @@
 import React from 'react'
-import Task from './Task'
+import Task from '../Task'
+import './List.css'
 
 function List (props) {
   const { tasks, filter, onRemove, onToggle } = props

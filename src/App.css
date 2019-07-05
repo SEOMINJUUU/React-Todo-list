@@ -11,7 +11,6 @@
   position: relative;
   margin: 1px;
   padding: 0 15px;
-  height: 32px;
   float: right;
   color: white;
   font-weight: 900;
@@ -23,122 +22,17 @@
 }
 
 .btn-orange {
+  height: 32px;
   background-color: orange;
 }
 
 .btn-red {
+  height: 32px;
   background-color: tomato;
 }
 
 .btn-purple {
+  height: 32px;
   background-color: mediumpurple;
   float: left;
-}
-
-#title {
-  margin: 10px 0;
-  font-size: 28px;
-  font-weight: 500;
-  color: lightgrey;
-}
-
-.h1 {
-  font-size: 32px;
-  font-weight: 700;
-  color: black;
-}
-
-#input {
-  width: 100%;
-  margin: 5px 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-input[type="text"] {
-  padding: 0 5px;
-  margin: 0;
-  width: 925px;
-  height: 30px;
-  font-size: 14px;
-}
-
-input::placeholder {
-  color: lightgrey;
-  font-weight: 700;
-}
-
-#control {
-  padding: 10px 0;
-  height: 33px;
-}
-
-#control ul {
-  margin: 0 0 0 -1px;
-  padding: 0;
-}
-
-#control li {
-  list-style: none;
-  display: inline-flex;
-  margin: 1px -1px 0 0;
-  padding: 8.5px 10px;
-  font-size: 11px;
-  font-weight: 900;
-  border: 1px solid mediumpurple;
-  text-transform: capitalize;
-}
-
-.hide {
-  display: none;
-}
-
-.show-inline-block {
-  display: inline-block;
-}
-
-.filter-on {
-  color: white;
-  background-color: rgb(168, 142, 221);
-}
-
-.filter-off {
-  color: rgb(125, 84, 206);
-  background-color: transparent;
-  border: 1px solid mediumpurple;
-}
-
-#list {
-  padding: 0;
-  margin: 0;
-}
-
-#list li {
-  list-style: none;
-  padding: 10px;
-  margin: 5px 0;
-  font-size: 14px;
-  font-weight: 900;
-  border: 1px solid lightgrey;
-  background-color: ghostwhite;
-}
-
-#list li:hover {
-  border: 1px solid rgb(188, 219, 184);
-  background-color: rgb(181, 204, 188);
-}
-
-.completed-list {
-  border: 1px solid rgb(188, 219, 184);
-  background-color: rgb(214, 240, 221);
-  text-decoration: line-through;
-  color: grey;
-}
-
-
-.delete {
-  width: 39px;
-  height: 39px;
-  bottom: 12px;
-  left: 12px;
 }
