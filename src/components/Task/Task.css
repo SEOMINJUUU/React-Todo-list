@@ -22,7 +22,7 @@
 
 .delete {
   width: 39px;
-  height: 39px;
+  height: 39px !important;
   bottom: 12px;
   left: 12px;
 }

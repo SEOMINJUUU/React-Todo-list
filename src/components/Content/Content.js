@@ -36,7 +36,8 @@ class Content extends React.Component {
   handleRemoveAll = () => {
     const { onChange } = this.props;
 
-    this.setState({ tasks: [] }, onChange(0));
+    this.setState({ tasks: [] });
+    onChange(0);
   };
 
   handleCompleted = () => {
@@ -56,14 +57,10 @@ class Content extends React.Component {
 
     const index = tasks.findIndex(task => task.id === id);
 
-    this.setState(
-      prevState => ({
-        tasks: prevState.tasks.filter(task => id !== task.id)
-      }),
-      () => {
-        if (!tasks[index].checked) onChange(leftTask - 1);
-      }
-    );
+    this.setState(prevState => ({
+      tasks: prevState.tasks.filter(task => id !== task.id)
+    }));
+    if (!tasks[index].checked) onChange(leftTask - 1);
   };
 
   handleToggle = id => {
