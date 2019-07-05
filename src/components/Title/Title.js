@@ -1,13 +1,14 @@
-import React from 'react'
-import './Title.css'
+import React from 'react';
+import './Title.css';
 
-function Title (props) {
+function Title(props) {
+  const leftTask = props;
+
   return (
-    <div id='title'>
-      <span className='h1'>Tasks </span>
-      ({props.leftTask})
+    <div id="title">
+      <span className="h1">Tasks </span>({leftTask})
     </div>
-  )
+  );
 }
 
-export default Title
+export default Title;

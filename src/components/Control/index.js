@@ -1,3 +1,3 @@
-import Control from './Control'
+import Control from './Control';
 
-export default Control
+export default Control;
