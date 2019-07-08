@@ -15,6 +15,7 @@ function List(props) {
         return task;
     }
   });
+
   const taskList = filteredTask.map(({ id, text, checked }) => (
     <Task id={id} text={text} onRemove={onRemove} onToggle={onToggle} checked={checked} key={id} />
   ));

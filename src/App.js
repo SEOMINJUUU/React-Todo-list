@@ -1,37 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Title from './components/Title';
 import Content from './components/Content';
 import './App.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      leftTasks: 0
-    };
-  }
+function App() {
+  document.title = 'Todo-list';
 
-  componentDidMount() {
-    document.title = 'Todo-list';
-  }
+  const [leftTasks, setLeftTasks] = useState(0);
 
-  handleChange = num => {
-    this.setState({
-      leftTasks: num
-    });
+  const handleChange = num => {
+    setLeftTasks(num);
   };
 
-  render() {
-    const { leftTasks } = this.state;
-    const { handleChange } = this;
-
-    return (
-      <div className="App">
-        <Title leftTask={leftTasks} />
-        <Content leftTask={leftTasks} onChange={handleChange} />
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <Title leftTask={leftTasks} />
+      <Content leftTask={leftTasks} onChange={handleChange} />
+    </div>
+  );
 }
 
 export default App;

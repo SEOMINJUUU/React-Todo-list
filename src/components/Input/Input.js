@@ -1,52 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Input.css';
 import { FaPlus } from 'react-icons/fa';
 
-class Input extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: ''
-    };
-  }
+function Input(props) {
+  const [text, setText] = useState('');
+  const { onChange } = props;
 
-  handleKeyPress = e => {
-    if (e.key === 'Enter') {
-      this.renderTask();
-    }
-  };
-
-  renderTask = () => {
-    const { text } = this.state;
-    const { onChange } = this.props;
-
-    if (text === '') {
-      return;
-    }
+  const renderTask = () => {
+    if (text === '') return;
 
     onChange(text);
-    this.setState({ text: '' });
+    setText('');
   };
 
-  render() {
-    const { text } = this.state;
-    const { handleKeyPress, renderTask } = this;
+  const handleKeyPress = e => {
+    if (e.key === 'Enter') renderTask();
+  };
 
-    return (
-      <div id="input">
-        <input
-          type="text"
-          placeholder="New task"
-          value={text}
-          onChange={e => this.setState({ text: e.target.value })}
-          onKeyPress={handleKeyPress}
-        />
-        <button type="button" className="btn btn-blue" onClick={renderTask}>
-          <FaPlus /> Add
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div id="input">
+      <input // ref 사용 -> 등록 후 focus
+        type="text"
+        placeholder="New task"
+        value={text}
+        onChange={e => setText(e.target.value)}
+        onKeyPress={handleKeyPress}
+      />
+      <button type="button" className="btn btn-blue" onClick={renderTask}>
+        <FaPlus /> Add
+      </button>
+    </div>
+  );
 }
 
 export default Input;

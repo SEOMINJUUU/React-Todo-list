@@ -1,99 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from '../Input';
 import Control from '../Control';
 import List from '../List';
 
-class Content extends React.Component {
-  // 왜 안에 선언하면 안될까
-  id = 0;
+function Content(props) {
+  const [id, setId] = useState(0);
+  const [tasks, setTasks] = useState([]);
+  const [filter, setFilter] = useState('');
+  const { onChange, leftTask } = props;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      tasks: [],
-      filter: 'all'
-    };
-  }
-
-  handleChange = text => {
-    const { onChange, leftTask } = this.props;
-
-    this.setState(prevState => ({
-      tasks: prevState.tasks.concat({
-        id: this.id,
-        text,
-        checked: false
-      })
-    }));
-    this.id += 1;
+  const handleChange = text => {
+    const nextTasks = tasks.concat({
+      id,
+      text,
+      checked: false
+    });
+    setId(id + 1);
+    setTasks(nextTasks);
     onChange(leftTask + 1);
   };
 
-  handleFilter = filter => {
-    this.setState({ filter });
-  };
-
-  handleRemoveAll = () => {
-    const { onChange } = this.props;
-
-    this.setState({ tasks: [] });
+  const handleRemoveAll = () => {
+    setTasks([]);
     onChange(0);
   };
 
-  handleCompleted = () => {
-    const { tasks } = this.state;
-    const { onChange } = this.props;
-
+  const handleCompleted = () => {
     const nextTasks = tasks.filter(task => task.checked === false);
-    this.setState({
-      tasks: nextTasks
-    });
+    setTasks(nextTasks);
     onChange(nextTasks.length);
   };
 
-  handleRemove = id => {
-    const { tasks } = this.state;
-    const { onChange, leftTask } = this.props;
-
-    const index = tasks.findIndex(task => task.id === id);
-
-    this.setState(prevState => ({
-      tasks: prevState.tasks.filter(task => id !== task.id)
-    }));
+  const handleRemove = removedId => {
+    const index = tasks.findIndex(task => task.id === removedId);
+    const nextTasks = tasks.filter(task => task.id !== removedId);
+    setTasks(nextTasks);
     if (!tasks[index].checked) onChange(leftTask - 1);
   };
 
-  handleToggle = id => {
-    const { tasks } = this.state;
-    const { onChange, leftTask } = this.props;
-
-    const tmp = [...tasks];
-    const index = tasks.findIndex(task => task.id === id);
+  const handleToggle = completedId => {
+    const nextTasks = [...tasks];
+    const index = tasks.findIndex(task => task.id === completedId);
     const selected = tasks[index];
 
-    tmp[index] = {
+    nextTasks[index] = {
       ...selected,
       checked: !selected.checked
     };
 
-    this.setState({
-      tasks: tmp
-    });
+    setTasks(nextTasks);
     onChange(selected.checked ? leftTask + 1 : leftTask - 1);
   };
 
-  render() {
-    const { tasks, filter } = this.state;
-    const { handleChange, handleFilter, handleCompleted, handleRemoveAll, handleRemove, handleToggle } = this;
-
-    return (
-      <div>
-        <Input onChange={handleChange} />
-        <Control onFilter={handleFilter} onCompleted={handleCompleted} onRemoveAll={handleRemoveAll} />
-        <List tasks={tasks} filter={filter} onRemove={handleRemove} onToggle={handleToggle} />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Input onChange={handleChange} />
+      <Control onFilter={() => setFilter(filter)} onCompleted={handleCompleted} onRemoveAll={handleRemoveAll} />
+      <List tasks={tasks} filter={filter} onRemove={handleRemove} onToggle={handleToggle} />
+    </div>
+  );
 }
 
 export default Content;
