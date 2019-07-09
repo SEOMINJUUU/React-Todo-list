@@ -5,7 +5,7 @@
   justify-content: space-between;
 }
 
-input[type="text"] {
+input[type='text'] {
   padding: 0 5px;
   margin: 0;
   width: 925px;
@@ -16,4 +16,11 @@ input[type="text"] {
 input::placeholder {
   color: lightgrey;
   font-weight: 700;
+}
+
+.btnBlue {
+  composes: btn from global;
+  float: right;
+  height: 33px;
+  background-color: dodgerblue;
 }

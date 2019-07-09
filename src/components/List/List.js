@@ -1,6 +1,6 @@
 import React from 'react';
 import Task from '../Task';
-import './List.css';
+import styles from './List.module.css';
 
 function List(props) {
   const { tasks, filter, onRemove, onToggle } = props;
@@ -20,7 +20,7 @@ function List(props) {
     <Task id={id} text={text} onRemove={onRemove} onToggle={onToggle} checked={checked} key={id} />
   ));
 
-  return <ul id="list">{taskList}</ul>;
+  return <ul className={styles.list}>{taskList}</ul>;
 }
 
 export default List;

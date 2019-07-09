@@ -3,12 +3,29 @@
   height: 33px;
 }
 
-#control ul {
+.btnOrange {
+  composes: btn from global;
+  float: right;
+  background-color: orange;
+}
+
+.btnRed {
+  composes: btn from global;
+  float: right;
+  background-color: tomato;
+}
+
+.btnPurple {
+  composes: btn from global;
+  background-color: mediumpurple;
+}
+
+.filterList {
   margin: 0 0 0 -1px;
   padding: 0;
 }
 
-#control li {
+.filterList li {
   list-style: none;
   display: inline-flex;
   margin: 1px -1px 0 0;

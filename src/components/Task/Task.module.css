@@ -1,4 +1,4 @@
-#list li {
+.task {
   list-style: none;
   padding: 10px;
   margin: 5px 0;
@@ -8,12 +8,12 @@
   background-color: ghostwhite;
 }
 
-#list li:hover {
+.task:hover {
   border: 1px solid rgb(188, 219, 184);
   background-color: rgb(181, 204, 188);
 }
 
-.completed-list {
+.checked {
   border: 1px solid rgb(188, 219, 184);
   background-color: rgb(214, 240, 221);
   text-decoration: line-through;
@@ -21,6 +21,7 @@
 }
 
 .delete {
+  composes: btnRed from '../Control/Control.module.css';
   width: 39px;
   height: 39px !important;
   bottom: 12px;

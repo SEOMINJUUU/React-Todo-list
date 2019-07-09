@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { FaFilter, FaTrashAlt, FaCheck } from 'react-icons/fa';
+import classnames from 'classnames/bind';
 import Filter from '../Filter';
-import './Control.css';
+import styles from './Control.module.css';
+
+const cx = classnames.bind(styles);
 
 function Control(props) {
   const [filter, setFilter] = useState('all');
@@ -13,29 +16,27 @@ function Control(props) {
     onFilter(id);
   };
 
+  const handleHide = () => {
+    setHidden(!hidden);
+  };
+
   return (
     <div id="control">
-      <button
-        type="button"
-        className="btn btn-purple"
-        onClick={() => {
-          setHidden(!hidden);
-        }}
-      >
+      <button type="button" className={styles.btnPurple} onClick={handleHide}>
         <FaFilter /> Filter
       </button>
 
-      <ul className={hidden ? 'hide' : 'show-inline-block'}>
+      <ul className={cx('filterList', hidden ? 'hide' : 'show-inline-block')}>
         <Filter id="all" filter={filter} onClick={handleClick} />
         <Filter id="todo" filter={filter} onClick={handleClick} />
         <Filter id="completed" filter={filter} onClick={handleClick} />
       </ul>
 
-      <button type="button" className="btn btn-red" onClick={onRemoveAll}>
+      <button type="button" className={styles.btnRed} onClick={onRemoveAll}>
         <FaTrashAlt /> Clear All
       </button>
 
-      <button type="button" className="btn btn-orange" onClick={onCompleted}>
+      <button type="button" className={styles.btnOrange} onClick={onCompleted}>
         <FaCheck /> Clear Completed
       </button>
     </div>

@@ -1,18 +1,19 @@
 import React from 'react';
-import './Task.css';
+import classnames from 'classnames/bind';
 import { FaTimes } from 'react-icons/fa';
+import styles from './Task.module.css';
+
+const cx = classnames.bind(styles);
 
 function Task(props) {
   const { id, text, checked, onToggle, onRemove } = props;
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-    <li className={checked ? 'completed-list' : ''} onClick={() => onToggle(id)}>
+    <li className={cx('task', { checked })} onClick={() => onToggle(id)}>
       {text}
       <button
         type="button"
-        className="btn btn-red delete"
+        className={styles.delete}
         onClick={e => {
           e.stopPropagation();
           onRemove(id);

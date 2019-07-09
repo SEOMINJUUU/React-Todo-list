@@ -7,32 +7,12 @@
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
-.btn {
+:global .btn {
   position: relative;
   margin: 1px;
   padding: 0 15px;
-  float: right;
+  height: 32px;
   color: white;
   font-weight: 900;
   border: none;
-}
-
-.btn-blue {
-  background-color: dodgerblue;
-}
-
-.btn-orange {
-  height: 32px;
-  background-color: orange;
-}
-
-.btn-red {
-  height: 32px;
-  background-color: tomato;
-}
-
-.btn-purple {
-  height: 32px;
-  background-color: mediumpurple;
-  float: left;
 }

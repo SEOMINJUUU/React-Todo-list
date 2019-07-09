@@ -4,7 +4,7 @@ import Control from '../Control';
 import List from '../List';
 
 function Content(props) {
-  const [id, setId] = useState(0);
+  const [id, setId] = useState(0); // ref로 관리하는게 나을까 ?
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState('');
   const { onChange, leftTask } = props;
@@ -47,17 +47,16 @@ function Content(props) {
       ...selected,
       checked: !selected.checked
     };
-
     setTasks(nextTasks);
     onChange(selected.checked ? leftTask + 1 : leftTask - 1);
   };
 
   return (
-    <div>
+    <>
       <Input onChange={handleChange} />
       <Control onFilter={() => setFilter(filter)} onCompleted={handleCompleted} onRemoveAll={handleRemoveAll} />
       <List tasks={tasks} filter={filter} onRemove={handleRemove} onToggle={handleToggle} />
-    </div>
+    </>
   );
 }
 

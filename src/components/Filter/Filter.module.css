@@ -1,9 +1,9 @@
-.filter-on {
+.on {
   color: white;
   background-color: rgb(168, 142, 221);
 }
 
-.filter-off {
+.off {
   color: rgb(125, 84, 206);
   background-color: transparent;
   border: 1px solid mediumpurple;
