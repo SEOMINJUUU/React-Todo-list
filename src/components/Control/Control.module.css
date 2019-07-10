@@ -1,4 +1,4 @@
-#control {
+.wrapper {
   padding: 10px 0;
   height: 33px;
 }
@@ -34,6 +34,17 @@
   font-weight: 900;
   border: 1px solid mediumpurple;
   text-transform: capitalize;
+}
+
+.on {
+  color: white;
+  background-color: rgb(168, 142, 221);
+}
+
+.off {
+  color: rgb(125, 84, 206);
+  background-color: transparent;
+  border: 1px solid mediumpurple;
 }
 
 .hide {

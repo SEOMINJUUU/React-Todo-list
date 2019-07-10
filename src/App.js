@@ -13,7 +13,7 @@ function App() {
   };
 
   return (
-    <div className={styles.App}>
+    <div className={styles.wrapper}>
       <Title leftTask={leftTasks} />
       <Content leftTask={leftTasks} onChange={handleChange} />
     </div>

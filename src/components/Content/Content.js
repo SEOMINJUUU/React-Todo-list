@@ -54,7 +54,7 @@ function Content(props) {
   return (
     <>
       <Input onChange={handleChange} />
-      <Control onFilter={() => setFilter(filter)} onCompleted={handleCompleted} onRemoveAll={handleRemoveAll} />
+      <Control onFilter={selected => setFilter(selected)} onCompleted={handleCompleted} onRemoveAll={handleRemoveAll} />
       <List tasks={tasks} filter={filter} onRemove={handleRemove} onToggle={handleToggle} />
     </>
   );

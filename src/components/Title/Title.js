@@ -4,7 +4,7 @@ import styles from './Title.module.css';
 function Title(props) {
   const { leftTask } = props;
   return (
-    <div className={styles.title}>
+    <div className={styles.wrapper}>
       <span className={styles.h1}>Tasks </span>({leftTask})
     </div>
   );

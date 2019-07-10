@@ -20,7 +20,7 @@ function Input(props) {
   };
 
   return (
-    <div id="input">
+    <div className={styles.wrapper}>
       <input // ref 사용 -> 등록 후 focus
         type="text"
         placeholder="New task"

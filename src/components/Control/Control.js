@@ -7,13 +7,14 @@ import styles from './Control.module.css';
 const cx = classnames.bind(styles);
 
 function Control(props) {
-  const [filter, setFilter] = useState('all');
   const [hidden, setHidden] = useState(true);
   const { onRemoveAll, onCompleted, onFilter } = props;
 
-  const handleClick = id => {
-    setFilter(id);
-    onFilter(id);
+  const handleClick = e => {
+    const children = e.currentTarget.children;
+    for (const child of children) child.className = styles.off;
+    e.target.className = styles.on;
+    onFilter(e.target.id);
   };
 
   const handleHide = () => {
@@ -21,15 +22,15 @@ function Control(props) {
   };
 
   return (
-    <div id="control">
+    <div className={styles.wrapper}>
       <button type="button" className={styles.btnPurple} onClick={handleHide}>
         <FaFilter /> Filter
       </button>
 
-      <ul className={cx('filterList', hidden ? 'hide' : 'show-inline-block')}>
-        <Filter id="all" filter={filter} onClick={handleClick} />
-        <Filter id="todo" filter={filter} onClick={handleClick} />
-        <Filter id="completed" filter={filter} onClick={handleClick} />
+      <ul className={cx('filterList', hidden ? 'hide' : 'show-inline-block')} onClick={e => handleClick(e)}>
+        <Filter id="all" />
+        <Filter id="todo" />
+        <Filter id="completed" />
       </ul>
 
       <button type="button" className={styles.btnRed} onClick={onRemoveAll}>
