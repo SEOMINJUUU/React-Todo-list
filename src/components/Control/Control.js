@@ -6,9 +6,8 @@ import styles from './Control.module.css';
 
 const cx = classnames.bind(styles);
 
-function Control(props) {
+const Control = ({ onRemoveAll, onCompleted, onFilter }) => {
   const [hidden, setHidden] = useState(true);
-  const { onRemoveAll, onCompleted, onFilter } = props;
 
   const handleClick = e => {
     const children = e.currentTarget.children;
@@ -42,6 +41,6 @@ function Control(props) {
       </button>
     </div>
   );
-}
+};
 
 export default Control;

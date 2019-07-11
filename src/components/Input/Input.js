@@ -2,9 +2,8 @@ import React, { useState, useRef } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import styles from './Input.module.css';
 
-function Input(props) {
+const Input = ({ onChange }) => {
   const [text, setText] = useState('');
-  const { onChange } = props;
   const inputEl = useRef(null);
 
   const renderTask = () => {
@@ -34,6 +33,6 @@ function Input(props) {
       </button>
     </div>
   );
-}
+};
 
 export default Input;

@@ -1,13 +1,12 @@
 import React from 'react';
 import styles from './Filter.module.css';
 
-function Filter(props) {
-  const { id } = props;
+const Filter = ({ id }) => {
   return (
     <li id={id} className={styles.off}>
       {id}
     </li>
   );
-}
+};
 
 export default Filter;

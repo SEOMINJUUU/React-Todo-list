@@ -3,11 +3,10 @@ import Input from '../Input';
 import Control from '../Control';
 import List from '../List';
 
-function Content(props) {
+const Content = ({ onChange, leftTask }) => {
   const [id, setId] = useState(0); // ref로 관리하는게 나을까 ?
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState('');
-  const { onChange, leftTask } = props;
 
   const handleChange = text => {
     const nextTasks = tasks.concat({
@@ -58,6 +57,6 @@ function Content(props) {
       <List tasks={tasks} filter={filter} onRemove={handleRemove} onToggle={handleToggle} />
     </>
   );
-}
+};
 
 export default Content;

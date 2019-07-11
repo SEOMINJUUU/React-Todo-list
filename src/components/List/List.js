@@ -2,9 +2,7 @@ import React from 'react';
 import Task from '../Task';
 import styles from './List.module.css';
 
-function List(props) {
-  const { tasks, filter, onRemove, onToggle } = props;
-
+const List = ({ tasks, filter, onRemove, onToggle }) => {
   const filteredTask = tasks.filter(task => {
     switch (filter) {
       case 'todo':
@@ -21,6 +19,6 @@ function List(props) {
   ));
 
   return <ul className={styles.list}>{taskList}</ul>;
-}
+};
 
 export default List;

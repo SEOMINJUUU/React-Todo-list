@@ -1,16 +1,13 @@
 import React from 'react';
-import { createStore } from 'redux';
 import classnames from 'classnames/bind';
 import { FaTimes } from 'react-icons/fa';
 import styles from './Task.module.css';
 
 const cx = classnames.bind(styles);
 
-function Task(props) {
-  const { id, text, checked, onToggle, onRemove } = props;
-
+const Task = ({ id, text, checked, onToggle, onRemove }) => {
   return (
-    <li className={cx('task', { checked })} onClick={() => onToggle(id)}>
+    <li className={cx('li', { checked })} onClick={() => onToggle(id)}>
       {text}
       <button
         type="button"
@@ -24,6 +21,6 @@ function Task(props) {
       </button>
     </li>
   );
-}
+};
 
 export default Task;
