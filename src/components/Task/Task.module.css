@@ -1,4 +1,4 @@
-.task {
+.li {
   list-style: none;
   padding: 10px;
   margin: 5px 0;
@@ -8,7 +8,7 @@
   background-color: ghostwhite;
 }
 
-.task:hover {
+.li:hover {
   border: 1px solid rgb(188, 219, 184);
   background-color: rgb(181, 204, 188);
 }
