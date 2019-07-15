@@ -1,3 +1,6 @@
+.on {
+  composes: on from '../Control/Control.module.css';
+}
 .off {
   composes: off from '../Control/Control.module.css';
 }

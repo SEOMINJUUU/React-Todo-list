@@ -2,23 +2,17 @@ import React from 'react';
 import Task from '../Task';
 import styles from './List.module.css';
 
-const List = ({ tasks, filter, onRemove, onToggle }) => {
-  const filteredTask = tasks.filter(task => {
-    switch (filter) {
-      case 'todo':
-        return task.checked === false;
-      case 'completed':
-        return task.checked === true;
-      default:
-        return task;
-    }
-  });
-
-  const taskList = filteredTask.map(({ id, text, checked }) => (
-    <Task id={id} text={text} onRemove={onRemove} onToggle={onToggle} checked={checked} key={id} />
+const List = ({ tasks, onRemove, onToggle }) => {
+  const currentTasks = tasks.map((task, index) => (
+    <Task
+      key={index}
+      text={task.text}
+      completed={task.completed}
+      onRemove={() => onRemove(task.id)}
+      onToggle={() => onToggle(task.id)}
+    />
   ));
-
-  return <ul className={styles.list}>{taskList}</ul>;
+  return <ul className={styles.list}>{currentTasks}</ul>;
 };
 
 export default List;

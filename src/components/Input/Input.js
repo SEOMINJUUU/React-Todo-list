@@ -1,16 +1,18 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import styles from './Input.module.css';
 
-const Input = ({ onChange }) => {
-  const [text, setText] = useState('');
+const Input = ({ onAddClick }) => {
   const inputEl = useRef(null);
+
+  let text = '';
 
   const renderTask = () => {
     if (text === '') return;
 
-    onChange(text);
-    setText('');
+    onAddClick(text.trim());
+
+    inputEl.current.value = '';
     inputEl.current.focus();
   };
 
@@ -23,8 +25,7 @@ const Input = ({ onChange }) => {
       <input // ref 사용 -> 등록 후 focus
         type="text"
         placeholder="New task"
-        value={text}
-        onChange={e => setText(e.target.value)}
+        onChange={e => (text = e.target.value)}
         onKeyPress={handleKeyPress}
         ref={inputEl}
       />

@@ -6,14 +6,14 @@ import styles from './Control.module.css';
 
 const cx = classnames.bind(styles);
 
-const Control = ({ onRemoveAll, onCompleted, onFilter }) => {
+const Control = ({ onSetFilter, onRemoveCompleted, onRemoveAll }) => {
   const [hidden, setHidden] = useState(true);
 
   const handleClick = e => {
     const children = e.currentTarget.children;
     for (const child of children) child.className = styles.off;
     e.target.className = styles.on;
-    onFilter(e.target.id);
+    onSetFilter(e.target.id);
   };
 
   const handleHide = () => {
@@ -26,17 +26,24 @@ const Control = ({ onRemoveAll, onCompleted, onFilter }) => {
         <FaFilter /> Filter
       </button>
 
-      <ul className={cx('filterList', hidden ? 'hide' : 'show-inline-block')} onClick={e => handleClick(e)}>
-        <Filter id="all" />
-        <Filter id="todo" />
-        <Filter id="completed" />
+      <ul
+        className={cx('filterList', hidden ? 'hide' : 'show-inline-block')}
+        onClick={e => handleClick(e)}
+      >
+        <Filter id="SHOW_ALL" />
+        <Filter id="SHOW_TODO" />
+        <Filter id="SHOW_COMPLETED" />
       </ul>
 
       <button type="button" className={styles.btnRed} onClick={onRemoveAll}>
         <FaTrashAlt /> Clear All
       </button>
 
-      <button type="button" className={styles.btnOrange} onClick={onCompleted}>
+      <button
+        type="button"
+        className={styles.btnOrange}
+        onClick={onRemoveCompleted}
+      >
         <FaCheck /> Clear Completed
       </button>
     </div>

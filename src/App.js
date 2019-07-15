@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Title from './components/Title';
-import Content from './components/Content';
+import Content from './container/Content';
 import styles from './App.module.css';
 
-const App = () => {
-  const [leftTasks, setLeftTasks] = useState(0);
-
-  const handleChange = num => {
-    setLeftTasks(num);
-  };
-
+const App = store => {
   document.title = 'Todo-list';
+  const handleClick = t => {
+    console.log(store);
+  };
+  // store.subscribe(() => {
+  //   console.log(store.getState());
+  // });
+
   return (
     <div className={styles.wrapper}>
-      <Title leftTask={leftTasks} />
-      <Content leftTask={leftTasks} onChange={handleChange} />
+      <Title onClick={handleClick} />
+      <Content />
     </div>
   );
 };

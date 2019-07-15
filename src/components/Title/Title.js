@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Title.module.css';
 
-const Title = ({ leftTask }) => {
+const Title = ({ onClick }) => {
   return (
-    <div className={styles.wrapper}>
-      <span className={styles.h1}>Tasks </span>({leftTask})
+    <div className={styles.wrapper} onClick={t => onClick(t)}>
+      <span className={styles.h1}>Tasks </span>
     </div>
   );
 };
