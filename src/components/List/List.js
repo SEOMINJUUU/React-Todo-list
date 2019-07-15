@@ -3,14 +3,8 @@ import Task from '../Task';
 import styles from './List.module.css';
 
 const List = ({ tasks, onRemove, onToggle }) => {
-  const currentTasks = tasks.map((task, index) => (
-    <Task
-      key={index}
-      text={task.text}
-      completed={task.completed}
-      onRemove={() => onRemove(task.id)}
-      onToggle={() => onToggle(task.id)}
-    />
+  const currentTasks = tasks.map(({ id, text, completed }) => (
+    <Task key={id} text={text} completed={completed} onRemove={() => onRemove(id)} onToggle={() => onToggle(id)} />
   ));
   return <ul className={styles.list}>{currentTasks}</ul>;
 };

@@ -31,14 +31,7 @@ const Content = ({
         onRemoveCompleted={() => onRemoveCompleted()}
         onRemoveAll={() => onRemoveAll()}
       />
-      <List
-        tasks={visibleTodos}
-        onRemove={id => {
-          onRemoveTodo(id);
-          console.log(id);
-        }}
-        onToggle={id => onCompleteTodo(id)}
-      />
+      <List tasks={visibleTodos} onRemove={id => onRemoveTodo(id)} onToggle={id => onCompleteTodo(id)} />
     </>
   );
 };
