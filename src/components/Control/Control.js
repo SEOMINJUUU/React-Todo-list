@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaFilter, FaTrashAlt, FaCheck } from 'react-icons/fa';
-import classnames from 'classnames/bind';
 import Filter from '../Filter';
+import classnames from 'classnames/bind';
 import styles from './Control.module.css';
 
 const cx = classnames.bind(styles);
@@ -26,10 +26,7 @@ const Control = ({ onSetFilter, onRemoveCompleted, onRemoveAll }) => {
         <FaFilter /> Filter
       </button>
 
-      <ul
-        className={cx('filterList', hidden ? 'hide' : 'show-inline-block')}
-        onClick={e => handleClick(e)}
-      >
+      <ul className={cx('filterList', hidden ? 'hide' : 'show-inline-block')} onClick={e => handleClick(e)}>
         <Filter id="SHOW_ALL" />
         <Filter id="SHOW_TODO" />
         <Filter id="SHOW_COMPLETED" />
@@ -39,11 +36,7 @@ const Control = ({ onSetFilter, onRemoveCompleted, onRemoveAll }) => {
         <FaTrashAlt /> Clear All
       </button>
 
-      <button
-        type="button"
-        className={styles.btnOrange}
-        onClick={onRemoveCompleted}
-      >
+      <button type="button" className={styles.btnOrange} onClick={onRemoveCompleted}>
         <FaCheck /> Clear Completed
       </button>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
-import classnames from 'classnames/bind';
 import { FaTimes } from 'react-icons/fa';
+import classnames from 'classnames/bind';
 import styles from './Task.module.css';
 
 const cx = classnames.bind(styles);

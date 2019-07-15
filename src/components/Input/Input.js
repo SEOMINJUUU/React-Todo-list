@@ -4,7 +4,6 @@ import styles from './Input.module.css';
 
 const Input = ({ onAddClick }) => {
   const inputEl = useRef(null);
-
   let text = '';
 
   const renderTask = () => {
@@ -13,7 +12,7 @@ const Input = ({ onAddClick }) => {
     onAddClick(text.trim());
 
     inputEl.current.value = '';
-    inputEl.current.focus();
+    inputEl.current.focus(); // 입력 후 다시 input에 포커스
   };
 
   const handleKeyPress = e => {

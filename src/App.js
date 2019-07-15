@@ -1,20 +1,14 @@
 import React from 'react';
-import Title from './components/Title';
+import Title from './container/Title';
 import Content from './container/Content';
 import styles from './App.module.css';
 
-const App = store => {
+const App = () => {
   document.title = 'Todo-list';
-  const handleClick = t => {
-    console.log(store);
-  };
-  // store.subscribe(() => {
-  //   console.log(store.getState());
-  // });
 
   return (
     <div className={styles.wrapper}>
-      <Title onClick={handleClick} />
+      <Title />
       <Content />
     </div>
   );

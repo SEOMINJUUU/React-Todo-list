@@ -3,10 +3,13 @@ import Task from '../Task';
 import styles from './List.module.css';
 
 const List = ({ tasks, onRemove, onToggle }) => {
-  const currentTasks = tasks.map(({ id, text, completed }) => (
-    <Task key={id} text={text} completed={completed} onRemove={() => onRemove(id)} onToggle={() => onToggle(id)} />
-  ));
-  return <ul className={styles.list}>{currentTasks}</ul>;
+  return (
+    <ul className={styles.list}>
+      {tasks.map(({ id, text, completed }) => (
+        <Task key={id} text={text} completed={completed} onRemove={() => onRemove(id)} onToggle={() => onToggle(id)} />
+      ))}
+    </ul>
+  );
 };
 
 export default List;

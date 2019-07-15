@@ -14,7 +14,6 @@ import Control from '../components/Control';
 import List from '../components/List';
 
 const Content = ({
-  leftTask, // TODO: leftTask redux로 처리
   onAddTodo,
   onRemoveCompleted,
   onRemoveAll,
@@ -48,12 +47,12 @@ const selectTodos = (tasks, filter) => {
   }
 };
 
-function select(state) {
+const select = state => {
   return {
     visibleTodos: selectTodos(state.tasks, state.visibilityFilter),
     visibilityFilter: state.visibilityFilter
   };
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   onAddTodo: text => dispatch(addTodo(text)),
