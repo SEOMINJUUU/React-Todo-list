@@ -23,6 +23,8 @@
 .filterList {
   margin: 0 0 0 -1px;
   padding: 0;
+  position: absolute;
+  display: none;
 }
 
 .filterList li {
@@ -45,10 +47,6 @@
   color: rgb(125, 84, 206);
   background-color: transparent;
   border: 1px solid mediumpurple;
-}
-
-.hide {
-  display: none;
 }
 
 .show-inline-block {
