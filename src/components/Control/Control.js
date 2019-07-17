@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FaFilter, FaTrashAlt, FaCheck } from 'react-icons/fa';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Filter from '../Filter';
 import classnames from 'classnames/bind';
 import styles from './Control.module.css';
@@ -22,27 +21,25 @@ const Control = ({ onSetFilter, onRemoveCompleted, onRemoveAll }) => {
   };
 
   return (
-    <Router>
-      <div className={styles.wrapper}>
-        <button type="button" className={styles.btnPurple} onClick={handleHide}>
-          <FaFilter /> Filter
-        </button>
+    <div className={styles.wrapper}>
+      <button type="button" className={styles.btnPurple} onClick={handleHide}>
+        <FaFilter /> Filter
+      </button>
 
-        <ul className={cx('filterList', !hidden && 'show-inline-block')} onClick={e => handleClick(e)}>
-          <Filter id="SHOW_ALL" />
-          <Filter id="SHOW_TODO" />
-          <Filter id="SHOW_COMPLETED" />
-        </ul>
+      <ul className={cx('filterList', !hidden && 'show-inline-block')} onClick={e => handleClick(e)}>
+        <Filter id="SHOW_ALL" />
+        <Filter id="SHOW_TODO" />
+        <Filter id="SHOW_COMPLETED" />
+      </ul>
 
-        <button type="button" className={styles.btnRed} onClick={onRemoveAll}>
-          <FaTrashAlt /> Clear All
-        </button>
+      <button type="button" className={styles.btnRed} onClick={onRemoveAll}>
+        <FaTrashAlt /> Clear All
+      </button>
 
-        <button type="button" className={styles.btnOrange} onClick={onRemoveCompleted}>
-          <FaCheck /> Clear Completed
-        </button>
-      </div>
-    </Router>
+      <button type="button" className={styles.btnOrange} onClick={onRemoveCompleted}>
+        <FaCheck /> Clear Completed
+      </button>
+    </div>
   );
 };
 

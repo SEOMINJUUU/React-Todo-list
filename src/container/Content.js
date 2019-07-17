@@ -6,15 +6,22 @@ import {
   removeCompleted,
   removeAll,
   removeTodo,
-  completeTodo,
-  setFilter,
-  VisibilityFilters
-} from '../actions';
+  completeTodo
+} from '../store/modules/tasks';
+import { setFilter, VisibilityFilters } from '../store/modules/filters';
 import Input from '../components/Input';
 import Control from '../components/Control';
 import List from '../components/List';
 
-const Content = ({ addTodo, removeCompleted, removeAll, removeTodo, completeTodo, setFilter, visibleTodos }) => {
+const Content = ({
+  addTodo,
+  removeCompleted,
+  removeAll,
+  removeTodo,
+  completeTodo,
+  setFilter,
+  visibleTodos
+}) => {
   return (
     <>
       <Input onAddClick={text => addTodo(text)} />
@@ -23,7 +30,11 @@ const Content = ({ addTodo, removeCompleted, removeAll, removeTodo, completeTodo
         onRemoveCompleted={() => removeCompleted()}
         onRemoveAll={() => removeAll()}
       />
-      <List tasks={visibleTodos} onRemove={id => removeTodo(id)} onToggle={id => completeTodo(id)} />
+      <List
+        tasks={visibleTodos}
+        onRemove={id => removeTodo(id)}
+        onToggle={id => completeTodo(id)}
+      />
     </>
   );
 };
@@ -41,13 +52,21 @@ const selectTodos = (tasks, filter) => {
 };
 
 const select = state => {
+  console.log(state.filters);
   return {
-    visibleTodos: selectTodos(state.tasks, state.visibilityFilter),
-    visibilityFilter: state.visibilityFilter
+    visibleTodos: selectTodos(state.tasks, state.filters),
+    visibilityFilter: state.filters
   };
 };
 
-const mapDispatchToProps = { addTodo, removeCompleted, removeAll, removeTodo, completeTodo, setFilter };
+const mapDispatchToProps = {
+  addTodo,
+  removeCompleted,
+  removeAll,
+  removeTodo,
+  completeTodo,
+  setFilter
+};
 
 export default connect(
   select,

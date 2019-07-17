@@ -16,7 +16,7 @@ const Input = ({ onAddClick }) => {
   };
 
   const handleKeyPress = e => {
-    if (e.key === 'Enter') renderTask();
+    e.key === 'Enter' && renderTask();
   };
 
   return (
