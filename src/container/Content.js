@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import {
   addTodo,
@@ -48,14 +47,7 @@ const select = state => {
   };
 };
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ addTodo, removeCompleted, removeAll, removeTodo, completeTodo, setFilter }, dispatch);
-// onAddTodo: text => dispatch(addTodo(text)),
-// onRemoveCompleted: () => dispatch(removeCompleted()),
-// onRemoveAll: () => dispatch(removeAll()),
-// onRemoveTodo: id => dispatch(removeTodo(id)),
-// onCompleteTodo: id => dispatch(completeTodo(id)),
-// onSetFilter: nextFilter => dispatch(setFilter(nextFilter))
+const mapDispatchToProps = { addTodo, removeCompleted, removeAll, removeTodo, completeTodo, setFilter };
 
 export default connect(
   select,
