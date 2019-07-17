@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import {
   addTodo,
   removeCompleted,
@@ -8,29 +11,20 @@ import {
   setFilter,
   VisibilityFilters
 } from '../actions';
-import { connect } from 'react-redux';
 import Input from '../components/Input';
 import Control from '../components/Control';
 import List from '../components/List';
 
-const Content = ({
-  onAddTodo,
-  onRemoveCompleted,
-  onRemoveAll,
-  onRemoveTodo,
-  onCompleteTodo,
-  onSetFilter,
-  visibleTodos
-}) => {
+const Content = ({ addTodo, removeCompleted, removeAll, removeTodo, completeTodo, setFilter, visibleTodos }) => {
   return (
     <>
-      <Input onAddClick={text => onAddTodo(text)} />
+      <Input onAddClick={text => addTodo(text)} />
       <Control
-        onSetFilter={nextFilter => onSetFilter(nextFilter)}
-        onRemoveCompleted={() => onRemoveCompleted()}
-        onRemoveAll={() => onRemoveAll()}
+        onSetFilter={nextFilter => setFilter(nextFilter)}
+        onRemoveCompleted={() => removeCompleted()}
+        onRemoveAll={() => removeAll()}
       />
-      <List tasks={visibleTodos} onRemove={id => onRemoveTodo(id)} onToggle={id => onCompleteTodo(id)} />
+      <List tasks={visibleTodos} onRemove={id => removeTodo(id)} onToggle={id => completeTodo(id)} />
     </>
   );
 };
@@ -54,14 +48,14 @@ const select = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  onAddTodo: text => dispatch(addTodo(text)),
-  onRemoveCompleted: () => dispatch(removeCompleted()),
-  onRemoveAll: () => dispatch(removeAll()),
-  onRemoveTodo: id => dispatch(removeTodo(id)),
-  onCompleteTodo: id => dispatch(completeTodo(id)),
-  onSetFilter: nextFilter => dispatch(setFilter(nextFilter))
-});
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ addTodo, removeCompleted, removeAll, removeTodo, completeTodo, setFilter }, dispatch);
+// onAddTodo: text => dispatch(addTodo(text)),
+// onRemoveCompleted: () => dispatch(removeCompleted()),
+// onRemoveAll: () => dispatch(removeAll()),
+// onRemoveTodo: id => dispatch(removeTodo(id)),
+// onCompleteTodo: id => dispatch(completeTodo(id)),
+// onSetFilter: nextFilter => dispatch(setFilter(nextFilter))
 
 export default connect(
   select,
