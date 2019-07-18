@@ -52,7 +52,6 @@ const selectTodos = (tasks, filter) => {
 };
 
 const select = state => {
-  console.log(state.filters);
   return {
     visibleTodos: selectTodos(state.tasks, state.filters),
     visibilityFilter: state.filters
