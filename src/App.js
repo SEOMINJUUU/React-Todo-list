@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from './container/Title';
-import Content from './container/Content';
+import Content from './components/Content';
 import styles from './App.module.css';
 
 const App = () => {

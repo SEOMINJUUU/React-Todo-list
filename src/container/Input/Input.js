@@ -1,16 +1,21 @@
 import React, { useRef } from 'react';
+import { connect } from 'react-redux';
+import { addTodo } from '../../store/modules/tasks';
+
 import { FaPlus } from 'react-icons/fa';
 import styles from './Input.module.css';
 
-const Input = ({ onAddClick }) => {
-  const inputEl = useRef(null);
+const Input = ({ addTodo }) => {
   let text = '';
+  const inputEl = useRef(null);
 
   const renderTask = () => {
-    if (text === '') return;
+    if (text === '') {
+      return;
+    }
 
-    onAddClick(text.trim());
-
+    addTodo(text.trim());
+    text = '';
     inputEl.current.value = '';
     inputEl.current.focus(); // 입력 후 다시 input에 포커스
   };
@@ -35,4 +40,11 @@ const Input = ({ onAddClick }) => {
   );
 };
 
-export default Input;
+const mapDispatchToProps = {
+  addTodo
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Input);

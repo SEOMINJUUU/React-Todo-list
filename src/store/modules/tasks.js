@@ -1,6 +1,4 @@
 import { createAction, handleActions } from 'redux-actions';
-// import * as firebase from 'firebase/app';
-// import firebaseConfig from '../../firebaseConfig';
 
 export const ADD_TODO = 'tasks/ADD_TODO';
 export const REMOVE_COMPLETED = 'tasks/REMOVE_COMPLETED';
@@ -8,12 +6,12 @@ export const REMOVE_ALL = 'tasks/REMOVE_ALL';
 export const REMOVE_TODO = 'tasks/REMOVE_TODO';
 export const COMPLETE_TODO = 'tasks/COMPLETE_TODO';
 
-let id = 0;
-export const addTodo = createAction(ADD_TODO, text => ({ text, id: id++ })); // text
+let initId = 0;
+export const addTodo = createAction(ADD_TODO, text => ({ text, id: initId++ })); // text
 export const removeCompleted = createAction(REMOVE_COMPLETED);
 export const removeAll = createAction(REMOVE_ALL);
-export const removeTodo = createAction(REMOVE_TODO, id => id); // id
-export const completeTodo = createAction(COMPLETE_TODO, id => id); // id
+export const removeTodo = createAction(REMOVE_TODO); // id
+export const completeTodo = createAction(COMPLETE_TODO); // id
 
 export default handleActions(
   {
