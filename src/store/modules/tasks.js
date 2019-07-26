@@ -1,4 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
+// import * as firebase from 'firebase/app';
+// import firebaseConfig from '../../firebaseConfig';
 
 export const ADD_TODO = 'tasks/ADD_TODO';
 export const REMOVE_COMPLETED = 'tasks/REMOVE_COMPLETED';
@@ -15,13 +17,17 @@ export const completeTodo = createAction(COMPLETE_TODO, id => id); // id
 
 export default handleActions(
   {
-    [ADD_TODO]: (state, { payload }) => state.concat({ id: payload.id, text: payload.text, completed: false }),
+    [ADD_TODO]: (state, { payload }) =>
+      state.concat({ id: payload.id, text: payload.text, completed: false }),
 
     [REMOVE_COMPLETED]: state => state.filter(task => task.completed === false),
 
     [REMOVE_ALL]: () => [],
 
-    [REMOVE_TODO]: (state, { payload }) => [...state.slice(0, payload), ...state.slice(payload + 1)],
+    [REMOVE_TODO]: (state, { payload }) => {
+      const completed = state.findIndex(task => task.id === payload);
+      return [...state.slice(0, completed), ...state.slice(completed + 1)];
+    },
 
     [COMPLETE_TODO]: (state, { payload }) => {
       const completed = state.findIndex(task => task.id === payload);
