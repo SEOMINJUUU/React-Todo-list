@@ -8,11 +8,9 @@
 }
 
 :global .btn {
-  position: relative;
   margin: 1px;
-  padding: 0 15px;
+  padding: 0 13px;
   height: 32px;
-  color: white;
-  font-weight: 900;
+  font-weight: 800;
   border: none;
 }

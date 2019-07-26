@@ -22,8 +22,9 @@
 
 .delete {
   composes: btnRed from '../Control/Control.module.css';
-  width: 39px;
-  height: 39px !important;
-  bottom: 12px;
+  height: 38px !important;
+  width: 38px;
+  position: relative;
   left: 12px;
+  bottom: 12px;
 }

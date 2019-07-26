@@ -6,17 +6,20 @@
 .btnOrange {
   composes: btn from global;
   float: right;
+  color: white;
   background-color: orange;
 }
 
 .btnRed {
   composes: btn from global;
   float: right;
+  color: white;
   background-color: tomato;
 }
 
 .btnPurple {
   composes: btn from global;
+  color: white;
   background-color: mediumpurple;
 }
 
